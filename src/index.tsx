@@ -8,6 +8,7 @@ import { store } from "./redux";
 import App from "./App";
 
 const rootElement = document.getElementById("root");
+// @ts-ignore
 const root = createRoot(rootElement);
 
 root.render(

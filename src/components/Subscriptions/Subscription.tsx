@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Txt, Flex, Divider, Button } from "rendition";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { Subscription } from "../../models";
 import { removeSubscription } from "../../redux/subscriptions";
+import { Subscription } from "../../redux/subscriptions/types";
 
 export const SubscriptionTab = ({
   subscription

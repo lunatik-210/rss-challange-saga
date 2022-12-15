@@ -31,7 +31,7 @@ describe("EventEmitter", () => {
     const emitter = new EventEmitter();
 
     let result = "";
-    emitter.subscribe("test", (...args) => {
+    emitter.subscribe("test", (...args: any) => {
       result = args.join("");
     });
     emitter.emit("test", "t", "e", "s", "t");
