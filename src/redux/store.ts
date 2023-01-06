@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { reducer as feedsReducer } from "./feeds";
 import { reducer as subscriptionsReducer } from "./subscriptions";
@@ -11,7 +11,7 @@ export const store = configureStore({
     feeds: feedsReducer,
     subscriptions: subscriptionsReducer
   },
-  middleware: [
+  middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({ serializableCheck: false, thunk: false }),
     sagaMiddleware
   ]

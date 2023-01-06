@@ -8,13 +8,14 @@ import {
   addSubscription,
   addPost
 } from "./subscriptions";
-import { generateName, generateNews } from "../utils";
+import { generateFeed, generateNews} from "../utils";
 import { EventEmitter } from "../EventEmitter";
 import { Feed } from "./feeds/types";
 
+
 const eventEmitter = new EventEmitter();
 
-function* runNewFeedSaga(feed: Feed) {
+export function* runNewFeedSaga(feed: Feed) {
   while (true) {
     let feeds: Feed[] = yield select(selectFeeds);
 
@@ -28,12 +29,7 @@ function* runNewFeedSaga(feed: Feed) {
 }
 
 export function* startNewFeedSaga() {
-  const newFeed = {
-    name: generateName(),
-    id: uuid(),
-    minTimeout: 500,
-    maxTimeout: 3000
-  };
+  const newFeed = generateFeed();
 
   yield put(addFeed(newFeed));
   yield fork(runNewFeedSaga, newFeed);
